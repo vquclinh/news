@@ -21,7 +21,7 @@ export default function ArticleCard({ article, variant = 'default' }) {
           {isGame ? 'Minigame' : cat.label}
         </span>
         <h3 className="card__title">{article.title}</h3>
-        {variant !== 'compact' && <p className="card__sapo">{article.sapo}</p>}
+        {variant !== 'compact' && <p className="card__sapo">{article.excerpt ?? article.sapo}</p>}
         {meta.length > 0 && (
           <div className="meta">
             {meta.map((m, i) => (

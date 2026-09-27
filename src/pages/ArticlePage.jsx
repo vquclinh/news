@@ -44,7 +44,7 @@ export default function ArticlePage() {
             {cat.label}
           </span>
           <h1 className="article__title">{article.title}</h1>
-          <p className="article__sapo">{article.sapo}</p>
+          {article.sapo && <p className="article__sapo">{article.sapo}</p>}
           <div className="article__meta">
             <div className="article__author">
               {article.author && <span className="article__avatar">{article.author.charAt(0)}</span>}
@@ -59,9 +59,15 @@ export default function ArticlePage() {
           </div>
         </header>
 
-        <div className="container article__cover">
-          <Cover cover={article.cover} size="xl" />
-        </div>
+        {article.cover.image ? (
+          <div className="container article__cover article__cover--photo">
+            <img src={article.cover.image} alt={article.title} />
+          </div>
+        ) : (
+          <div className="container article__cover">
+            <Cover cover={article.cover} size="xl" />
+          </div>
+        )}
 
         <div className="container container--narrow article__body">
           {article.content.length > 0 ? (

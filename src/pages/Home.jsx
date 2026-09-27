@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import ArticleCard from '../components/ArticleCard.jsx'
 import Cover from '../components/Cover.jsx'
+import NewsBrief from '../components/NewsBrief.jsx'
 import { ARTICLES, byCategory, getArticle } from '../data/articles.js'
 import { CATEGORIES } from '../data/site.js'
 
@@ -13,20 +14,20 @@ export default function Home() {
 
   return (
     <>
-      {/* Tiêu điểm + Điểm tin */}
-      <section className="container home-hero">
-        <div className="home-hero__main">
-          <SectionTitle label="Tiêu điểm" />
-          <ArticleCard article={interview} variant="feature" />
+      {/* Tiêu điểm */}
+      <section className="container home-lead">
+        <SectionTitle label="Tiêu điểm" />
+        <ArticleCard article={interview} variant="feature" />
+      </section>
+
+      {/* Điểm tin: dàn đầy đủ phần giới thiệu của từng bản tin */}
+      <section className="container home-news">
+        <SectionTitle label={CATEGORIES['diem-tin'].label} to={CATEGORIES['diem-tin'].path} />
+        <div className="home-news__list">
+          {news.map((a, i) => (
+            <NewsBrief key={a.slug} article={a} reverse={i % 2 === 1} />
+          ))}
         </div>
-        <aside className="home-hero__side">
-          <SectionTitle label={CATEGORIES['diem-tin'].label} to={CATEGORIES['diem-tin'].path} />
-          <div className="stack">
-            {news.map((a) => (
-              <ArticleCard key={a.slug} article={a} />
-            ))}
-          </div>
-        </aside>
       </section>
 
       {/* Trích dẫn nổi bật */}

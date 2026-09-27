@@ -726,54 +726,148 @@ h3 {
 
 /* ---------------- Home ---------------- */
 
-.home-hero {
-  display: grid;
-  grid-template-columns: 1.55fr 1fr;
-  gap: 40px;
-  padding-block: 44px 56px;
+.home-lead {
+  padding-top: 44px;
 }
 
-.home-hero__main {
+/* Tiêu điểm: thẻ ngang, ảnh trái – chữ phải */
+.home-lead .card {
+  flex-direction: row;
+}
+
+.home-lead .card__media {
+  flex: 1.35;
   display: flex;
-  flex-direction: column;
+  min-height: 360px;
 }
 
-.home-hero__main .card {
-  height: auto;
-  flex: 1;
-}
-
-.home-hero__main .card__media {
-  flex: 1;
-  display: flex;
-  min-height: 260px;
-}
-
-.home-hero__main .cover {
+.home-lead .cover {
   flex: 1;
   aspect-ratio: auto;
 }
 
-.home-hero__main .card__body {
-  flex: none;
+.home-lead .card__body {
+  flex: 1;
+  justify-content: center;
 }
 
-.home-hero__side {
-  border-left: 1px solid var(--line);
-  padding-left: 40px;
+.home-news {
+  padding-block: 52px 64px;
 }
 
-.stack {
+.home-news__list {
   display: grid;
-  gap: 22px;
 }
 
-.stack .card__sapo {
-  -webkit-line-clamp: 2;
+/* Bản tin dàn đầy đủ */
+.brief {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 44px;
+  align-items: start;
 }
 
-.stack .cover {
-  aspect-ratio: 16 / 7;
+.brief + .brief {
+  margin-top: 44px;
+  padding-top: 44px;
+  border-top: 1px solid var(--line);
+}
+
+.brief--reverse .brief__media {
+  order: 2;
+}
+
+.brief__media {
+  margin: 0;
+}
+
+.brief__img {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.brief__img .cover {
+  aspect-ratio: 3 / 2;
+}
+
+.brief__img .cover__img {
+  transition: transform 0.8s var(--ease);
+}
+
+.brief__img:hover .cover__img {
+  transform: scale(1.04);
+}
+
+.brief__media figcaption {
+  margin-top: 12px;
+  padding-left: 12px;
+  border-left: 2px solid var(--kc);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.brief__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.brief__title {
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.brief__title a {
+  transition: color 0.2s;
+}
+
+.brief__title a:hover {
+  color: var(--kc);
+}
+
+.brief__text {
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--ink-2);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.brief__more {
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.brief__more a,
+.brief__cta {
+  color: var(--kc);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.brief__more a:hover,
+.brief__cta:hover {
+  text-decoration-thickness: 3px;
+}
+
+.brief__more .nowrap {
+  white-space: nowrap;
+}
+
+.brief .meta {
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
 }
 
 .pull-quote {
@@ -1578,6 +1672,17 @@ h3 {
   margin-bottom: 44px;
 }
 
+/* Ảnh đinh thật: giữ nguyên tỉ lệ ảnh, không cắt */
+.article__cover--photo {
+  max-width: 960px;
+}
+
+.article__cover--photo img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
 .article__body {
   font-size: 18.5px;
   line-height: 1.8;
@@ -2123,18 +2228,8 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .fun-band__grid,
-  .home-hero {
+  .fun-band__grid {
     grid-template-columns: 1fr;
-  }
-
-  .home-hero__side {
-    border-left: 0;
-    padding-left: 0;
-  }
-
-  .stack {
-    grid-template-columns: 1fr 1fr;
   }
 
   .profile {
@@ -2155,6 +2250,15 @@ h3 {
 }
 
 @media (max-width: 860px) {
+  .brief {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .brief--reverse .brief__media {
+    order: 0;
+  }
+
   .nav__inner {
     justify-content: flex-start;
   }
@@ -2240,7 +2344,19 @@ h3 {
     font-size: 15px;
   }
 
-  .stack,
+  .home-lead .card {
+    flex-direction: column;
+  }
+
+  .home-lead .card__media {
+    min-height: 220px;
+  }
+
+  .brief__text {
+    font-size: 16px;
+    text-align: left;
+  }
+
   .grid--2,
   .grid--3,
   .overview__grid,
