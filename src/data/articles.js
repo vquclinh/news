@@ -106,7 +106,7 @@ export const ARTICLES = [
     author: 'Quốc Toàn - Mỹ Ngân',
     date: '2026-09-11',
     cover: {
-      image: '/images/tin-2-ngo-thi-phuong-lan.jpg',
+      image: '/images/tin-2-anh-dinh.jpg',
       from: '#1f4e79',
       to: '#0b1f33',
       emoji: '🗞️',
