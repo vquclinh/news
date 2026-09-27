@@ -1,7 +1,8 @@
-// API nhỏ lưu thư góp ý vào data/feedback.json.
-// Chạy kèm Vite (npm run dev / npm run preview) nên không cần server riêng.
+// API nhỏ lưu thư góp ý vào data/feedback.json khi chạy trên máy (npm run dev / npm run preview).
+// Khi deploy lên Vercel, api/feedback.js sẽ thay thế và lưu thư vào Redis.
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { buildEntry } from './feedback.js'
 
 const DATA_FILE = path.resolve('data/feedback.json')
 const MAX_BODY = 100_000
@@ -35,8 +36,6 @@ function send(res, status, data) {
   res.end(JSON.stringify(data))
 }
 
-const clean = (value, max) => String(value ?? '').trim().slice(0, max)
-
 async function handler(req, res) {
   if (req.method === 'GET') return send(res, 200, await readAll())
 
@@ -49,21 +48,8 @@ async function handler(req, res) {
     return send(res, 400, { error: 'Dữ liệu gửi lên không hợp lệ.' })
   }
 
-  const message = clean(input.message, 3000)
-  if (message.length < 10) {
-    return send(res, 400, { error: 'Nội dung góp ý cần ít nhất 10 ký tự.' })
-  }
-
-  const rating = Number(input.rating)
-  const entry = {
-    id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
-    name: clean(input.name, 80) || 'Ẩn danh',
-    email: clean(input.email, 120),
-    topic: clean(input.topic, 60) || 'Khác',
-    rating: rating >= 1 && rating <= 5 ? Math.round(rating) : null,
-    message,
-    createdAt: new Date().toISOString(),
-  }
+  const { entry, error } = buildEntry(input)
+  if (error) return send(res, 400, { error })
 
   const all = await readAll()
   all.unshift(entry)

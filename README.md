@@ -30,3 +30,12 @@ Mở http://localhost:5173
 - **Ảnh thật**: bỏ ảnh vào `public/images/`, rồi thêm `image: '/images/ten-anh.jpg'` vào `cover` của bài.
 
 Thư góp ý được lưu vào `data/feedback.json` (đã có trong `.gitignore`).
+## Deploy lên Vercel
+
+1. Import repo vào Vercel (Framework Preset: **Vite** — Vercel tự nhận).
+2. Để lưu thư góp ý: vào project trên Vercel → **Storage** → **Create Database** → chọn **Upstash for Redis** (gói Free) → **Connect** với project này.
+   Vercel sẽ tự thêm biến môi trường `KV_REST_API_URL` và `KV_REST_API_TOKEN`.
+3. **Redeploy** để function nhận biến môi trường mới.
+
+- `vercel.json` chuyển mọi đường dẫn về `index.html` để F5 / mở link trực tiếp không bị 404.
+- `api/feedback.js` là API góp ý khi chạy trên Vercel (thư lưu trong Redis); khi chạy `npm run dev` thì thư vẫn lưu vào `data/feedback.json`.
