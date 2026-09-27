@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import ArticleCard from '../components/ArticleCard.jsx'
 import Cover from '../components/Cover.jsx'
 import NewsBrief from '../components/NewsBrief.jsx'
+import Spotlight from '../components/Spotlight.jsx'
 import { ARTICLES, byCategory, getArticle } from '../data/articles.js'
 import { CATEGORIES } from '../data/site.js'
 
@@ -17,7 +18,7 @@ export default function Home() {
       {/* Tiêu điểm */}
       <section className="container home-lead">
         <SectionTitle label="Tiêu điểm" />
-        <ArticleCard article={interview} variant="feature" />
+        <Spotlight article={interview} />
       </section>
 
       {/* Điểm tin: dàn đầy đủ phần giới thiệu của từng bản tin */}

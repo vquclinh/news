@@ -3,7 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import Cover from '../components/Cover.jsx'
 import ArticleCard from '../components/ArticleCard.jsx'
 import NotFound from './NotFound.jsx'
-import { ARTICLES, formatDate, getArticle, readingTime } from '../data/articles.js'
+import { ARTICLES, authorLine, formatDate, getArticle, readingTime } from '../data/articles.js'
 import { CATEGORIES } from '../data/site.js'
 
 export default function ArticlePage() {
@@ -30,43 +30,66 @@ export default function ArticlePage() {
     }
   }
 
+  // Ảnh đinh dọc của bài phỏng vấn: dàn ảnh cạnh tiêu đề thay vì đặt ảnh ngang phía dưới.
+  const portraitHero = article.type === 'interview' && article.cover.image
+  const author = authorLine(article)
+
+  const head = (
+    <>
+      <nav className="breadcrumb">
+        <Link to="/">Trang chủ</Link>
+        <span>/</span>
+        <Link to={cat.path}>{cat.label}</Link>
+      </nav>
+      <span className="kicker" style={{ '--kc': cat.color }}>
+        {cat.label}
+      </span>
+      <h1 className="article__title">{article.title}</h1>
+      {article.sapo && <p className="article__sapo">{article.sapo}</p>}
+      <div className="article__meta">
+        <div className="article__author">
+          {article.author && <span className="article__avatar">{article.author.charAt(0)}</span>}
+          <div>
+            {author && <strong>{author}</strong>}
+            {byline && <span>{byline}</span>}
+          </div>
+        </div>
+        <button className="btn btn--ghost btn--sm" onClick={copyLink}>
+          {copied ? 'Đã sao chép ✓' : 'Chia sẻ 🔗'}
+        </button>
+      </div>
+    </>
+  )
+
   return (
     <>
       <div className="progress" style={{ transform: `scaleX(${progress})` }} />
       <article className="article">
-        <header className="container container--narrow article__head">
-          <nav className="breadcrumb">
-            <Link to="/">Trang chủ</Link>
-            <span>/</span>
-            <Link to={cat.path}>{cat.label}</Link>
-          </nav>
-          <span className="kicker" style={{ '--kc': cat.color }}>
-            {cat.label}
-          </span>
-          <h1 className="article__title">{article.title}</h1>
-          {article.sapo && <p className="article__sapo">{article.sapo}</p>}
-          <div className="article__meta">
-            <div className="article__author">
-              {article.author && <span className="article__avatar">{article.author.charAt(0)}</span>}
-              <div>
-                {article.author && <strong>{article.author}</strong>}
-                {byline && <span>{byline}</span>}
-              </div>
+        {portraitHero ? (
+          <header className="portrait-hero" style={{ '--kc': cat.color }}>
+            <div className="container portrait-hero__inner">
+              <figure className="portrait-hero__photo">
+                <div className="portrait-hero__frame">
+                  <img src={article.cover.image} alt={article.profile?.name ?? article.title} />
+                </div>
+                {article.cover.caption && <figcaption>{article.cover.caption}</figcaption>}
+              </figure>
+              <div className="article__head portrait-hero__text">{head}</div>
             </div>
-            <button className="btn btn--ghost btn--sm" onClick={copyLink}>
-              {copied ? 'Đã sao chép ✓' : 'Chia sẻ 🔗'}
-            </button>
-          </div>
-        </header>
-
-        {article.cover.image ? (
-          <div className="container article__cover article__cover--photo">
-            <img src={article.cover.image} alt={article.title} />
-          </div>
+          </header>
         ) : (
-          <div className="container article__cover">
-            <Cover cover={article.cover} size="xl" />
-          </div>
+          <>
+            <header className="container container--narrow article__head">{head}</header>
+            {article.cover.image ? (
+              <div className="container article__cover article__cover--photo">
+                <img src={article.cover.image} alt={article.title} />
+              </div>
+            ) : (
+              <div className="container article__cover">
+                <Cover cover={article.cover} size="xl" />
+              </div>
+            )}
+          </>
         )}
 
         <div className="container container--narrow article__body">

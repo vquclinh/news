@@ -1,14 +1,17 @@
-// Toàn bộ nội dung 5 bài viết nằm ở đây — hiện đang là placeholder, chờ cập nhật.
+// Toàn bộ nội dung 5 bài viết nằm ở đây.
 //
 // Mỗi bài gồm:
-//   title, sapo, author, date ('YYYY-MM-DD')
-//   sapo         : (tuỳ chọn) đoạn in đậm dưới tiêu đề trong trang bài. Bỏ trống thì không hiện.
-//   excerpt      : (tuỳ chọn) đoạn giới thiệu hiện ở thẻ bài ngoài trang chủ / chuyên mục.
-//                  Bỏ trống thì thẻ bài dùng sapo.
-//   readMore     : (tuỳ chọn, bài tin) câu mời đọc ở trang chủ; " tại đây." được nối thêm thành link vào bài.
-//   cover.image  : đường dẫn ảnh bìa, ví dụ '/images/ten-anh.jpg' (ảnh đặt trong public/images/)
+//   title, author, date ('YYYY-MM-DD'; để trống thì không hiện ngày)
+//   authorLabel  : (tuỳ chọn) chữ đứng trước tên tác giả, ví dụ 'Thực hiện' → "Thực hiện: Bảo Ngọc".
+//   sapo         : (tuỳ chọn) đoạn mở đầu ngay dưới tiêu đề trong trang bài. Bỏ trống thì không hiện.
+//   excerpt      : (tuỳ chọn) phần giới thiệu hiện ngoài trang chủ / chuyên mục — một đoạn (chuỗi)
+//                  hoặc nhiều đoạn (mảng chuỗi). Bỏ trống thì dùng sapo.
+//   readMore     : (tuỳ chọn) câu mời đọc ở trang chủ; phần đặt trong [ ] thành link vào bài,
+//                  ví dụ 'Xin mời quý thầy cô xem thêm [tại đây].'
+//   cover.image  : đường dẫn ảnh đinh, ví dụ '/images/ten-anh.jpg' (ảnh đặt trong public/images/)
 //                  Để trống thì hiển thị nền màu placeholder.
-//   cover.caption: (tuỳ chọn) chú thích ảnh bìa, hiện dưới ảnh ở trang chủ.
+//   cover.caption: (tuỳ chọn) chú thích ảnh đinh.
+//   profile      : (bài phỏng vấn) { name, role, image, facts } cho trang Gương mặt nhân văn.
 //   content      : danh sách các đoạn. Các loại block:
 //                  { type: 'p', text }                 đoạn văn
 //                  { type: 'h2', text }                tiêu đề phụ
@@ -23,18 +26,69 @@ export const ARTICLES = [
     slug: 'phong-van',
     category: 'guong-mat',
     type: 'interview',
-    title: 'Tiêu đề bài phỏng vấn',
-    sapo: 'Sapo bài phỏng vấn sẽ được cập nhật.',
-    author: '',
+    title: 'Cô Hoàng Tố Nguyên và lớp học “không khoảng cách”',
+    excerpt: [
+      '“Mình xem trường Nhân văn như ngôi nhà thứ hai, xem các bạn sinh viên, học viên như con cháu trong gia đình” - cô Hoàng Tố Nguyên, giảng viên khoa Ngữ văn Trung Quốc, chia sẻ về 14 năm gắn bó với nghề giáo.',
+      'Cô Tố Nguyên có nội quy lớp học độc lạ. Cô cho phép sinh viên mang đồ ăn, thức uống vào lớp, được phép ngắt lời cô khi có thắc mắc về bài học. Cô xưng hô “mình - bạn” với học trò để rút ngắn khoảng cách, giúp các bạn thoải mái khi học tập và trò chuyện với cô hơn.',
+      'Không chỉ hỗ trợ kiến thức, cô Tố Nguyên còn lắng nghe những chia sẻ về áp lực học tập, cuộc sống và sức khỏe tinh thần của học trò. Trong thời gian tới, cô mong muốn tổ chức thêm nhiều hoạt động thực tế, để các bạn có cơ hội giao lưu, trải nghiệm và kết nối với bạn bè quốc tế.',
+    ],
+    readMore: 'Mời quý thầy cô [vào đây] để hiểu hơn về lớp học thú vị của cô Hoàng Tố Nguyên nhé!',
+    sapo: '“Mình xem trường Nhân văn như ngôi nhà thứ hai, xem các bạn sinh viên, học viên như con cháu trong gia đình”. Đó là lời tâm sự của cô Hoàng Tố Nguyên (43 tuổi, giảng viên khoa Ngữ văn Trung Quốc). Suốt hành trình 14 năm “đưa đò”, cô Tố Nguyên luôn ghi lại những đoạn video ngắn trong các tiết học để lưu giữ kỷ niệm đáng nhớ cùng học trò.',
+    author: 'Bảo Ngọc, Thanh Tuyền',
+    authorLabel: 'Thực hiện',
     date: '',
-    cover: { image: '', from: '#b7791f', to: '#7c2d12', emoji: '🎙️', word: 'Phỏng vấn' },
+    cover: {
+      image: '/images/phong-van-chan-dung.jpg',
+      caption:
+        'Chân dung cô Hoàng Tố Nguyên, giảng viên khoa Ngữ văn Trung Quốc với 14 năm miệt mài "đưa đò" - Ảnh: NVCC',
+      from: '#b7791f',
+      to: '#7c2d12',
+      emoji: '🎙️',
+      word: 'Phỏng vấn',
+    },
     profile: {
-      name: 'Tên giảng viên',
-      role: 'Chức danh / đơn vị công tác',
-      image: '',
+      name: 'Hoàng Tố Nguyên',
+      role: 'Giảng viên khoa Ngữ văn Trung Quốc',
+      image: '/images/phong-van-chan-dung.jpg',
       facts: [],
     },
-    content: [],
+    content: [
+      {
+        type: 'p',
+        text: 'Quay phim, chụp hình là sở thích của cô Tố Nguyên. Cô thường quay những khoảnh khắc vui nhộn của lớp học, quay học trò ngồi nghe giảng, làm bài tập và tham gia các hoạt động ở lớp. Khi có sự đồng ý của học trò, cô đăng tải các video đó lên mạng xã hội. Cô Tố Nguyên chia sẻ: “Khi các bạn chăm chú lắng nghe bài giảng rồi ghi chép lại, hình ảnh đó rất dễ thương. Mình muốn ghi lại các khoảnh khắc đó để lan tỏa tinh thần học đến các bạn khác. Rồi khi về già, mình quay lại xem những thước phim này, chắc sẽ cảm thấy ấm lòng và hoài niệm”.',
+      },
+      {
+        type: 'image',
+        src: '/images/phong-van-selfie.jpg',
+        caption:
+          'Những bức ảnh selfie gần gũi cùng học trò là cách cô Tố Nguyên lưu giữ kỷ niệm thanh xuân trên giảng đường - Ảnh: NVCC',
+      },
+      {
+        type: 'p',
+        text: 'Đặc biệt, cô Tố Nguyên có nội quy lớp học độc lạ. Cô cho phép học trò mang đồ ăn thức uống vào lớp. Trong quá trình học, nếu có gì thắc mắc, các bạn được phép ngắt lời của cô và đặt ra câu hỏi. Vì cô sợ khi học trò nghe giảng xong rồi, các bạn sẽ quên mất vấn đề định hỏi. Khi có bạn gặp vấn đề sức khỏe, như mỏi người khi ngồi lâu, cô cho phép bạn có thể vừa nghe giảng, vừa đi qua lại trong lớp để cơ thể thư giãn hơn. Thoải mái như thế, nhưng “chưa có bạn nào dám làm”, cô cười.',
+      },
+      {
+        type: 'p',
+        text: 'Cô thường xưng hô với học trò là “mình” với “bạn”. Cô cho biết, vì đối tượng học bao gồm cả sinh viên lẫn học viên. Có những người ngang tuổi cô, thậm chí lớn hơn. Vì thế, cô xưng “mình” sẽ tạo cảm giác thân thiết, rút ngắn khoảng cách giữa giảng viên và học trò, các bạn cũng thoải mái trao đổi với cô hơn. Học trò hay nhắn tin riêng, nhờ cô giải đáp phần kiến thức. Có những lúc các bạn thắc mắc những lĩnh vực “ngoài tầm với” của cô, cô sẵn sàng giới thiệu những thầy cô phụ trách lĩnh vực đó để tiện giải đáp chính xác những băn khoăn của học trò.',
+      },
+      {
+        type: 'p',
+        text: 'Không chỉ trao đổi kiến thức học thuật, các bạn còn tìm đến cô để tâm sự, chia sẻ các vấn đề trong cuộc sống, những áp lực học tập hay vấn đề sức khỏe tinh thần. “Mình cảm thấy xúc động khi học trò tin tưởng và sẵn sàng chia sẻ câu chuyện riêng tư với mình. Mình trò chuyện và động viên các bạn vì nghĩ rằng các bạn cũng chỉ mới ‘chân ướt chân ráo’ học tiếng Trung và bước vào đời, cần sự hỗ trợ giúp sức từ mình. Đó là nhiệm vụ mình phải làm, là niềm vui của mình”.',
+      },
+      {
+        type: 'p',
+        text: 'Để buổi học trở nên thú vị, cô thường tổ chức các hoạt động giao lưu giữa các bạn sinh viên Việt Nam với các bạn lưu học sinh Trung Quốc. Sinh viên hai nước sẽ có những buổi trò chuyện với nhau. Các bạn giới thiệu bản thân, quảng bá quê hương, kể lại khó khăn trong quá trình học và trao đổi những bí quyết giúp học giỏi tiếng Trung và tiếng Việt. Các buổi học này sẽ giúp các bạn tiếp thu kiến thức nhanh hơn, có cơ hội giao tiếp với người ngoại quốc để tăng kỹ năng ngôn ngữ và phản xạ.',
+      },
+      {
+        type: 'p',
+        text: 'Trong những năm tới, cô Tố Nguyên đặt mục tiêu tổ chức nhiều hoạt động giao lưu hơn nữa để sinh viên và học viên có cơ hội thực chiến, kết nối với bạn bè ngoại quốc, mở rộng mối quan hệ để tiện cho tương lai sau này.',
+      },
+      {
+        type: 'box',
+        title: 'Điều thú vị về cô Hoàng Tố Nguyên',
+        text: 'Cô Tố Nguyên là cựu sinh viên Trường Đại học Khoa học Xã hội và Nhân văn, học ngành Ngữ văn Trung Quốc niên khóa 2001-2005. Cô hay nói vui: “Thời gian mình gặp sinh viên và đồng nghiệp còn nhiều hơn thời gian mình gặp người nhà của mình”.',
+      },
+    ],
   },
   {
     slug: 'tin-1',
@@ -43,7 +97,7 @@ export const ARTICLES = [
     title: 'Các USSH-er sẽ có thêm cơ hội trải nghiệm tại “xứ sở hoa anh đào”',
     excerpt:
       'Sáng ngày 24/9, Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM ký kết Biên bản ghi nhớ hợp tác với Công ty TNHH DYM Việt Nam tại cơ sở Sài Gòn. Hai bên sẽ phối hợp trong việc đào tạo, tổ chức các hoạt động trải nghiệm thực tế và thực tập, phát triển nguồn nhân lực. Đặc biệt, Nhà trường và Công ty tăng cường hợp tác trong lĩnh vực Nhật Bản học và chuyển đổi số. Sinh viên sẽ có thêm cơ hội tham quan doanh nghiệp, tham gia các chương trình đào tạo và thực tập, đồng thời bổ sung kiến thức công nghệ, kỹ năng nghề nghiệp bên cạnh năng lực tiếng Nhật.',
-    readMore: 'Xin mời quý thầy cô xem thêm thông tin chi tiết về buổi ký kết',
+    readMore: 'Xin mời quý thầy cô xem thêm thông tin chi tiết về buổi ký kết [tại đây].',
     author: 'Quốc Toàn - Mỹ Hường',
     date: '2026-09-24',
     cover: {
@@ -102,7 +156,7 @@ export const ARTICLES = [
     title: 'Chăm sóc sức khỏe viên chức và người lao động từ những xét nghiệm định kỳ',
     excerpt:
       'Trong hai buổi sáng 10.9 và 11.9, Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM tiến hành chương trình khám sức khỏe định kỳ đợt 1 năm 2026 cho toàn thể viên chức và người lao động. Hoạt động bao gồm khâu lấy máu xét nghiệm tại trường và khám chuyên sâu tại Bệnh viện Đại học Y Dược TP.HCM - Cơ sở 2. Thông qua đó, Nhà trường tiếp tục khẳng định cam kết chăm lo đời sống, bảo vệ quyền lợi y tế chính đáng của người lao động. Đây là cơ sở quan trọng để duy trì một môi trường làm việc an toàn, lý tưởng, giúp toàn thể nhân sự an tâm gắn bó và cống hiến lâu dài.',
-    readMore: 'Xin mời quý thầy cô xem thêm thông tin chi tiết về buổi xét nghiệm',
+    readMore: 'Xin mời quý thầy cô xem thêm thông tin chi tiết về buổi xét nghiệm [tại đây].',
     author: 'Quốc Toàn - Mỹ Ngân',
     date: '2026-09-11',
     cover: {
@@ -178,14 +232,21 @@ export const byCategory = (category) => ARTICLES.filter((a) => a.category === ca
 export const articleUrl = (article) =>
   article.type === 'game' ? '/ussh-fun-zone/minigame' : `/bai-viet/${article.slug}`
 
+// Phần giới thiệu ngoài trang chủ, luôn trả về mảng các đoạn.
+export const excerptOf = (article) => [].concat(article.excerpt ?? article.sapo ?? [])
+
+export const authorLine = (article) =>
+  article.author ? [article.authorLabel, article.author].filter(Boolean).join(': ') : ''
+
 export const formatDate = (iso) =>
   iso ? new Date(iso).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : ''
 
 // Ước tính thời gian đọc (~200 chữ/phút); trả về null khi bài chưa có nội dung.
 export function readingTime(article) {
-  const text = (article.content ?? [])
-    .map((b) => [b.text, b.q, b.a, ...(b.items ?? []).map((i) => `${i.title} ${i.text}`)].join(' '))
-    .join(' ')
-  const words = text.split(/\s+/).filter(Boolean).length
-  return words ? Math.max(1, Math.round(words / 200)) : null
+  if (!article.content?.length) return null
+  const blocks = article.content.map((b) =>
+    [b.text, b.q, b.a, ...(b.items ?? []).map((i) => `${i.title} ${i.text}`)].join(' '),
+  )
+  const words = [article.sapo, ...blocks].join(' ').split(/\s+/).filter(Boolean).length
+  return Math.max(1, Math.round(words / 200))
 }
