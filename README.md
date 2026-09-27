@@ -1,6 +1,6 @@
-# Nhân Văn Times
+# Trạm Tin Nhân Văn
 
-Website bản tin của sinh viên Báo chí – USSH (Vite + React).
+Website Trạm Tin Nhân Văn (Vite + React).
 
 ## Chạy
 

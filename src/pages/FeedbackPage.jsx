@@ -66,7 +66,7 @@ export default function FeedbackPage() {
       <PageHeader
         eyebrow="Hòm thư"
         title="Góc góp ý"
-        description="Mỗi lá thư là một lời nhắn quý giá giúp Nhân Văn Times hoàn thiện hơn. Thầy cô và các bạn cứ thoải mái chia sẻ nhé!"
+        description="Mỗi lá thư là một lời nhắn quý giá giúp Trạm Tin Nhân Văn hoàn thiện hơn. Thầy cô và các bạn cứ thoải mái chia sẻ nhé!"
         color="#4a3f35"
       />
 

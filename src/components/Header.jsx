@@ -37,7 +37,6 @@ export default function Header() {
         <Link to="/" className="masthead__logo">
           {SITE.name}
         </Link>
-        <p className="masthead__tagline">{SITE.tagline}</p>
       </div>
 
       <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`} aria-label="Điều hướng chính">

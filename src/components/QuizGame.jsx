@@ -186,7 +186,7 @@ function Result({ correct, total, score, best, onReplay }) {
   )
 
   async function share() {
-    const text = `Mình đạt danh hiệu "${rank.title}" với ${correct}/${total} câu đúng (${score} điểm) ở minigame Nhân Văn Times! Thử sức tại: ${window.location.href}`
+    const text = `Mình đạt danh hiệu "${rank.title}" với ${correct}/${total} câu đúng (${score} điểm) ở minigame Trạm Tin Nhân Văn! Thử sức tại: ${window.location.href}`
     try {
       await navigator.clipboard.writeText(text)
       setCopied(true)

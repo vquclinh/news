@@ -1,6 +1,5 @@
 export const SITE = {
-  name: 'Nhân Văn Times',
-  tagline: 'Bản tin của sinh viên Báo chí – USSH',
+  name: 'Trạm Tin Nhân Văn',
   motto: 'Lắng nghe · Ghi chép · Lan tỏa',
   // Email nhận thư từ Góc góp ý (điền vào để form hoạt động)
   feedbackEmail: '',
