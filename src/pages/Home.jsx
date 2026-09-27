@@ -1,0 +1,102 @@
+import { Link } from 'react-router-dom'
+import ArticleCard from '../components/ArticleCard.jsx'
+import Cover from '../components/Cover.jsx'
+import { ARTICLES, byCategory, getArticle } from '../data/articles.js'
+import { CATEGORIES } from '../data/site.js'
+
+export default function Home() {
+  const interview = byCategory('guong-mat')[0]
+  const news = byCategory('diem-tin')
+  const game = getArticle('minigame')
+  const funny = byCategory('fun-zone').find((a) => a.type === 'funny')
+  const pullQuote = interview.content.find((b) => b.type === 'quote')
+
+  return (
+    <>
+      {/* Tiêu điểm + Điểm tin */}
+      <section className="container home-hero">
+        <div className="home-hero__main">
+          <SectionTitle label="Tiêu điểm" />
+          <ArticleCard article={interview} variant="feature" />
+        </div>
+        <aside className="home-hero__side">
+          <SectionTitle label={CATEGORIES['diem-tin'].label} to={CATEGORIES['diem-tin'].path} />
+          <div className="stack">
+            {news.map((a) => (
+              <ArticleCard key={a.slug} article={a} />
+            ))}
+          </div>
+        </aside>
+      </section>
+
+      {/* Trích dẫn nổi bật */}
+      {pullQuote && (
+        <section className="pull-quote">
+          <div className="container pull-quote__inner">
+            <span className="pull-quote__mark">“</span>
+            <blockquote>{pullQuote.text}</blockquote>
+            <Link to={`/bai-viet/${interview.slug}`} className="pull-quote__cite">
+              — {pullQuote.cite} · Đọc bài phỏng vấn →
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* Fun Zone */}
+      <section className="fun-band">
+        <div className="container">
+          <SectionTitle label={CATEGORIES['fun-zone'].label} to={CATEGORIES['fun-zone'].path} light />
+          <div className="fun-band__grid">
+            <Link to="/ussh-fun-zone/minigame" className="game-promo">
+              <div className="game-promo__text">
+                <span className="game-promo__tag">Minigame · 10 câu hỏi</span>
+                <h3>{game.title}</h3>
+                <p>{game.sapo}</p>
+                <span className="btn btn--gold">Chơi ngay ▶</span>
+              </div>
+              <div className="game-promo__art">
+                <Cover cover={game.cover} size="lg" />
+              </div>
+            </Link>
+            <ArticleCard article={funny} />
+          </div>
+        </div>
+      </section>
+
+      {/* Tổng quan chuyên mục */}
+      <section className="container overview">
+        <SectionTitle label="Chuyên mục" />
+        <div className="overview__grid">
+          {Object.entries(CATEGORIES).map(([key, cat]) => (
+            <Link key={key} to={cat.path} className="overview__item" style={{ '--kc': cat.color }}>
+              <span className="overview__count">{ARTICLES.filter((a) => a.category === key).length}</span>
+              <h3>{cat.label}</h3>
+              <p>{cat.description}</p>
+              <span className="overview__more">Xem chuyên mục →</span>
+            </Link>
+          ))}
+          <Link to="/goc-gop-y" className="overview__item overview__item--letter" style={{ '--kc': '#4a3f35' }}>
+            <span className="overview__count">✉</span>
+            <h3>Góc góp ý</h3>
+            <p>Thầy cô và các bạn có nhận xét, ý tưởng hay lời nhắn? Gửi thư cho Ban biên tập ngay.</p>
+            <span className="overview__more">Viết thư →</span>
+          </Link>
+        </div>
+      </section>
+    </>
+  )
+}
+
+function SectionTitle({ label, to, light }) {
+  return (
+    <div className={`section-title ${light ? 'section-title--light' : ''}`}>
+      <h2>{label}</h2>
+      <span className="section-title__line" />
+      {to && (
+        <Link to={to} className="section-title__more">
+          Xem tất cả
+        </Link>
+      )}
+    </div>
+  )
+}
