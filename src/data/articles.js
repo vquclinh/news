@@ -72,7 +72,7 @@ export const ARTICLES = [
         type: 'image',
         src: '/images/tin-1-luu-van-quyet.jpg',
         caption:
-          'PGS.TS Lưu Văn Quyết kỳ vọng hai bên tận dụng thế mạnh của nhau để triển khai những chương trình hợp tác thiết thực. Ảnh: QUỐC TOÀN',
+          'PGS.TS Lưu Văn Quyết kỳ vọng hai bên tận dụng thế mạnh của nhau để triển khai những chương trình hợp tác thiết thực - Ảnh: QUỐC TOÀN',
       },
       {
         type: 'p',
@@ -81,7 +81,7 @@ export const ARTICLES = [
       {
         type: 'image',
         src: '/images/tin-1-nguyen-thanh-tuan.jpg',
-        caption: 'TS. Nguyễn Thanh Tuấn trao đổi về định hướng hợp tác của Khoa Đông Phương học. Ảnh: QUỐC TOÀN',
+        caption: 'TS. Nguyễn Thanh Tuấn trao đổi về định hướng hợp tác của Khoa Đông Phương học. - Ảnh: QUỐC TOÀN',
       },
       {
         type: 'p',
@@ -99,12 +99,56 @@ export const ARTICLES = [
     slug: 'tin-2',
     category: 'diem-tin',
     type: 'news',
-    title: 'Tiêu đề bài tin số 2',
-    sapo: 'Sapo bài tin sẽ được cập nhật.',
-    author: '',
-    date: '',
-    cover: { image: '', from: '#1f4e79', to: '#0b1f33', emoji: '🗞️', word: 'Điểm tin' },
-    content: [],
+    title: 'Chăm sóc sức khỏe viên chức và người lao động từ những xét nghiệm định kỳ',
+    excerpt:
+      'Trong hai buổi sáng 10.9 và 11.9, Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM tiến hành chương trình khám sức khỏe định kỳ đợt 1 năm 2026 cho toàn thể viên chức và người lao động. Hoạt động bao gồm khâu lấy máu xét nghiệm tại trường và khám chuyên sâu tại Bệnh viện Đại học Y Dược TP.HCM - Cơ sở 2. Thông qua đó, Nhà trường tiếp tục khẳng định cam kết chăm lo đời sống, bảo vệ quyền lợi y tế chính đáng của người lao động. Đây là cơ sở quan trọng để duy trì một môi trường làm việc an toàn, lý tưởng, giúp toàn thể nhân sự an tâm gắn bó và cống hiến lâu dài.',
+    readMore: 'Xin mời quý thầy cô xem thêm thông tin chi tiết về buổi xét nghiệm',
+    author: 'Quốc Toàn - Mỹ Ngân',
+    date: '2026-09-11',
+    cover: {
+      image: '/images/tin-2-ngo-thi-phuong-lan.jpg',
+      from: '#1f4e79',
+      to: '#0b1f33',
+      emoji: '🗞️',
+      word: 'Điểm tin',
+    },
+    content: [
+      {
+        type: 'p',
+        text: 'Trong hai buổi sáng 10.9 và 11.9, Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM tiến hành chương trình khám sức khỏe định kỳ đợt 1 năm 2026 cho toàn thể viên chức và người lao động. Hoạt động bao gồm khâu lấy máu xét nghiệm tại trường và khám chuyên sâu tại Bệnh viện Đại học Y Dược TP.HCM - Cơ sở 2, nhằm đánh giá toàn diện sức khỏe của đội ngũ nhân sự.',
+      },
+      {
+        type: 'p',
+        text: 'Để tiết kiệm thời gian và đảm bảo quy chuẩn y tế, khâu lấy mẫu xét nghiệm ban đầu được Nhà trường triển khai linh hoạt ngay tại hai cơ sở. Cụ thể, sáng 10/9, công tác lấy máu diễn ra tại cơ sở Linh Xuân và tiếp tục thực hiện vào sáng 11.9 tại cơ sở Sài Gòn.',
+      },
+      {
+        type: 'p',
+        text: 'Gói xét nghiệm máu năm nay hỗ trợ đánh giá thể trạng tổng quát với nhiều hạng mục chi tiết, bao gồm: tổng phân tích tế bào máu, định lượng Glucose, chức năng thận, men gan, mỡ máu, Acid Uric và xét nghiệm vi khuẩn H.Pylori.',
+      },
+      {
+        type: 'image',
+        src: '/images/tin-2-ngo-thi-phuong-lan.jpg',
+        caption:
+          'GS.TS Ngô Thị Phương Lan, Hiệu trưởng Nhà trường, thực hiện lấy máu xét nghiệm khám sức khỏe định kỳ - Ảnh: QUỐC TOÀN',
+      },
+      {
+        type: 'p',
+        text: 'Sau bước xét nghiệm này, viên chức và người lao động sẽ trực tiếp đến Bệnh viện Đại học Y Dược TP.HCM - Cơ sở 2 để khám chuyên sâu và chẩn đoán hình ảnh. Lịch khám được phân bổ khoa học thành hai đợt: từ ngày 14/9 đến 17/9/2026 và từ ngày 21/9 đến 22/9/2026.',
+      },
+      {
+        type: 'image',
+        src: '/images/tin-2-lay-mau.jpg',
+        caption: 'Lấy máu xét nghiệm là bước tầm soát lâm sàng quan trọng giúp đánh giá thể trạng tổng quát - Ảnh: QUỐC TOÀN',
+      },
+      {
+        type: 'p',
+        text: 'Hoạt động y tế thường niên này được tổ chức nhằm thực hiện nghiêm túc quy định của Luật An toàn, vệ sinh lao động (2015), trong đó yêu cầu người sử dụng lao động có trách nhiệm khám sức khỏe cho nhân sự ít nhất một lần/năm.',
+      },
+      {
+        type: 'p',
+        text: 'Thông qua đó, Nhà trường tiếp tục khẳng định cam kết chăm lo đời sống, bảo vệ quyền lợi y tế chính đáng của người lao động. Đây là cơ sở quan trọng để duy trì một môi trường làm việc an toàn, lý tưởng, giúp toàn thể nhân sự an tâm gắn bó và cống hiến lâu dài.',
+      },
+    ],
   },
   {
     slug: 'minigame',
