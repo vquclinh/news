@@ -19,23 +19,16 @@ Mở http://localhost:5173
 | Điểm tin nhân văn | `/diem-tin-nhan-van` | 2 bài tin |
 | Gương mặt nhân văn | `/guong-mat-nhan-van` | Bài phỏng vấn cô |
 | USSH Fun Zone | `/ussh-fun-zone` | Minigame + bài viết vui |
-| Góc góp ý | `/goc-gop-y` | Form gửi thư góp ý |
-| Hộp thư (ẩn) | `/goc-gop-y/hop-thu` | Xem các thư đã nhận |
+| Góc góp ý | `/goc-gop-y` | Form gửi thư góp ý qua email |
 
 ## Sửa nội dung
 
-- **Bài viết**: `src/data/articles.js`
+- **Bài viết**: `src/data/articles.js` (hướng dẫn định dạng ở đầu file)
 - **Câu hỏi minigame**: `src/data/quiz.js`
-- **Tên trang, menu, chuyên mục**: `src/data/site.js`
-- **Ảnh thật**: bỏ ảnh vào `public/images/`, rồi thêm `image: '/images/ten-anh.jpg'` vào `cover` của bài.
+- **Tên trang, menu, chuyên mục, email nhận góp ý**: `src/data/site.js`
+- **Ảnh**: bỏ vào `public/images/`, rồi dùng đường dẫn `/images/ten-anh.jpg` trong bài.
 
-Thư góp ý được lưu vào `data/feedback.json` (đã có trong `.gitignore`).
-## Deploy lên Vercel
+## Deploy
 
-1. Import repo vào Vercel (Framework Preset: **Vite** — Vercel tự nhận).
-2. Để lưu thư góp ý: vào project trên Vercel → **Storage** → **Create Database** → chọn **Upstash for Redis** (gói Free) → **Connect** với project này.
-   Vercel sẽ tự thêm biến môi trường `KV_REST_API_URL` và `KV_REST_API_TOKEN`.
-3. **Redeploy** để function nhận biến môi trường mới.
-
-- `vercel.json` chuyển mọi đường dẫn về `index.html` để F5 / mở link trực tiếp không bị 404.
-- `api/feedback.js` là API góp ý khi chạy trên Vercel (thư lưu trong Redis); khi chạy `npm run dev` thì thư vẫn lưu vào `data/feedback.json`.
+Web tĩnh, không cần database. Trên Vercel chỉ cần import repo (Framework Preset: Vite).
+`vercel.json` giúp mở link trực tiếp / F5 ở trang con không bị 404.

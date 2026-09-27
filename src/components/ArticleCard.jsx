@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom'
 import Cover from './Cover.jsx'
 import { CATEGORIES } from '../data/site.js'
-import { articleUrl, formatDate } from '../data/articles.js'
+import { articleUrl, formatDate, readingTime } from '../data/articles.js'
 
 const COVER_SIZE = { feature: 'lg', compact: 'sm', default: 'md' }
 
 export default function ArticleCard({ article, variant = 'default' }) {
   const cat = CATEGORIES[article.category]
   const isGame = article.type === 'game'
+  const minutes = readingTime(article)
+  const meta = [formatDate(article.date), isGame ? 'Chơi ngay →' : minutes && `${minutes} phút đọc`].filter(Boolean)
 
   return (
     <Link to={articleUrl(article)} className={`card card--${variant}`}>
@@ -20,11 +22,16 @@ export default function ArticleCard({ article, variant = 'default' }) {
         </span>
         <h3 className="card__title">{article.title}</h3>
         {variant !== 'compact' && <p className="card__sapo">{article.sapo}</p>}
-        <div className="meta">
-          <span>{formatDate(article.date)}</span>
-          <span className="meta__dot" />
-          <span>{isGame ? 'Chơi ngay →' : `${article.readTime} phút đọc`}</span>
-        </div>
+        {meta.length > 0 && (
+          <div className="meta">
+            {meta.map((m, i) => (
+              <span key={m} className="meta__item">
+                {i > 0 && <span className="meta__dot" />}
+                {m}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </Link>
   )

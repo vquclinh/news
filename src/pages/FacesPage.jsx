@@ -16,19 +16,25 @@ export default function FacesPage() {
           <article key={a.slug} className="profile">
             <div className="profile__card">
               <div className="profile__avatar">
-                <Cover cover={a.cover} size="sm" />
+                {a.profile.image ? (
+                  <img src={a.profile.image} alt={a.profile.name} />
+                ) : (
+                  <Cover cover={a.cover} size="sm" />
+                )}
               </div>
               <h2 className="profile__name">{a.profile.name}</h2>
               <p className="profile__role">{a.profile.role}</p>
-              <ul className="profile__facts">
-                {a.profile.facts.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
+              {a.profile.facts.length > 0 && (
+                <ul className="profile__facts">
+                  {a.profile.facts.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div className="profile__story">
               <span className="kicker" style={{ '--kc': cat.color }}>
-                Phỏng vấn · {formatDate(a.date)}
+                {['Phỏng vấn', formatDate(a.date)].filter(Boolean).join(' · ')}
               </span>
               <h2 className="profile__title">{a.title}</h2>
               <p className="profile__sapo">{a.sapo}</p>

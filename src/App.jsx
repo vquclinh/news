@@ -9,7 +9,6 @@ import FunZonePage from './pages/FunZonePage.jsx'
 import GamePage from './pages/GamePage.jsx'
 import ArticlePage from './pages/ArticlePage.jsx'
 import FeedbackPage from './pages/FeedbackPage.jsx'
-import InboxPage from './pages/InboxPage.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 export default function App() {
@@ -30,7 +29,6 @@ export default function App() {
           <Route path="/ussh-fun-zone" element={<FunZonePage />} />
           <Route path="/ussh-fun-zone/minigame" element={<GamePage />} />
           <Route path="/goc-gop-y" element={<FeedbackPage />} />
-          <Route path="/goc-gop-y/hop-thu" element={<InboxPage />} />
           <Route path="/bai-viet/:slug" element={<ArticlePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

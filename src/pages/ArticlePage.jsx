@@ -3,7 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import Cover from '../components/Cover.jsx'
 import ArticleCard from '../components/ArticleCard.jsx'
 import NotFound from './NotFound.jsx'
-import { ARTICLES, formatDate, getArticle } from '../data/articles.js'
+import { ARTICLES, formatDate, getArticle, readingTime } from '../data/articles.js'
 import { CATEGORIES } from '../data/site.js'
 
 export default function ArticlePage() {
@@ -16,6 +16,8 @@ export default function ArticlePage() {
   if (article.type === 'game') return <Navigate to="/ussh-fun-zone/minigame" replace />
 
   const cat = CATEGORIES[article.category]
+  const minutes = readingTime(article)
+  const byline = [formatDate(article.date), minutes && `${minutes} phút đọc`].filter(Boolean).join(' · ')
   const related = ARTICLES.filter((a) => a.slug !== article.slug).slice(0, 3)
 
   async function copyLink() {
@@ -45,12 +47,10 @@ export default function ArticlePage() {
           <p className="article__sapo">{article.sapo}</p>
           <div className="article__meta">
             <div className="article__author">
-              <span className="article__avatar">{article.author.charAt(0)}</span>
+              {article.author && <span className="article__avatar">{article.author.charAt(0)}</span>}
               <div>
-                <strong>{article.author}</strong>
-                <span>
-                  {formatDate(article.date)} · {article.readTime} phút đọc
-                </span>
+                {article.author && <strong>{article.author}</strong>}
+                {byline && <span>{byline}</span>}
               </div>
             </div>
             <button className="btn btn--ghost btn--sm" onClick={copyLink}>
@@ -64,10 +64,19 @@ export default function ArticlePage() {
         </div>
 
         <div className="container container--narrow article__body">
-          {article.content.map((block, i) => (
-            <Block key={i} block={block} color={cat.color} />
-          ))}
-          <div className="article__end">■</div>
+          {article.content.length > 0 ? (
+            <>
+              {article.content.map((block, i) => (
+                <Block key={i} block={block} color={cat.color} />
+              ))}
+              <div className="article__end">■</div>
+            </>
+          ) : (
+            <div className="placeholder">
+              <span>✍️</span>
+              <p>Nội dung bài viết đang được cập nhật.</p>
+            </div>
+          )}
         </div>
       </article>
 
@@ -90,6 +99,13 @@ function Block({ block, color }) {
   switch (block.type) {
     case 'h2':
       return <h2>{block.text}</h2>
+    case 'image':
+      return (
+        <figure className="figure">
+          <img src={block.src} alt={block.caption ?? ''} loading="lazy" />
+          {block.caption && <figcaption>{block.caption}</figcaption>}
+        </figure>
+      )
     case 'quote':
       return (
         <blockquote className="quote" style={{ '--kc': color }}>
