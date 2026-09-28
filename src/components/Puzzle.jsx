@@ -57,9 +57,9 @@ export default function Puzzle() {
   return (
     <article className="puzzle">
       <header className="puzzle__head">
-        <span className="puzzle__badge" aria-hidden="true">🔎</span>
-        <p className="puzzle__eyebrow">Minigame</p>
-        <h1 className="puzzle__title">{MINIGAME.title}</h1>
+        <img src={MINIGAME.banner} alt="" className="puzzle__banner" />
+        {/* Tên minigame đã có trên ảnh bìa – giữ h1 cho trình đọc màn hình */}
+        <h1 className="sr-only">{MINIGAME.title}</h1>
         <p className="puzzle__lead">
           <Rich text={MINIGAME.intro} />
         </p>

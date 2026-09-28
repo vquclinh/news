@@ -82,7 +82,7 @@ export default function ArticlePage() {
             <header className="container container--narrow article__head">{head}</header>
             {article.cover.image ? (
               <div className="container article__cover article__cover--photo">
-                <img src={article.cover.image} alt={article.title} />
+                <img src={article.cover.image} alt={article.cover.alt ?? article.title} />
               </div>
             ) : (
               <div className="container article__cover">
@@ -131,7 +131,7 @@ function Block({ block, color }) {
     case 'image':
       return (
         <figure className="figure">
-          <img src={block.src} alt={block.caption ?? ''} loading="lazy" />
+          <img src={block.src} alt={block.alt ?? block.caption ?? ''} loading="lazy" />
           {block.caption && <figcaption>{block.caption}</figcaption>}
         </figure>
       )
@@ -167,6 +167,22 @@ function Block({ block, color }) {
         </Tag>
       )
     }
+    case 'skills':
+      return (
+        <aside className="skills" style={{ '--kc': color }}>
+          <strong className="skills__title">{block.title}</strong>
+          <ul>
+            {block.items.map((item) => (
+              <li key={item.label}>
+                <span className="skills__icon" aria-hidden="true">
+                  {item.icon}
+                </span>
+                {item.label}
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )
     case 'box':
       return (
         <aside className="info-box" style={{ '--kc': color }}>

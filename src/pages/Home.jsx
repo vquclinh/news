@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import ArticleCard from '../components/ArticleCard.jsx'
-import GamePromo from '../components/GamePromo.jsx'
+import FunPromo from '../components/FunPromo.jsx'
 import NewsBrief from '../components/NewsBrief.jsx'
 import Spotlight from '../components/Spotlight.jsx'
 import { ARTICLES, byCategory, getArticle } from '../data/articles.js'
@@ -49,8 +48,8 @@ export default function Home() {
         <div className="container">
           <SectionTitle label={CATEGORIES['fun-zone'].label} to={CATEGORIES['fun-zone'].path} light />
           <div className="fun-band__grid">
-            <GamePromo game={game} />
-            <ArticleCard article={funny} />
+            <FunPromo article={game} />
+            <FunPromo article={funny} />
           </div>
         </div>
       </section>

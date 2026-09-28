@@ -11,15 +11,18 @@
 //   cover.image  : đường dẫn ảnh đinh, ví dụ '/images/ten-anh.jpg' (ảnh đặt trong public/images/)
 //                  Để trống thì hiển thị nền màu placeholder.
 //   cover.caption: (tuỳ chọn) chú thích ảnh đinh.
+//   cover.alt    : (tuỳ chọn) mô tả ảnh cho trình đọc màn hình khi không có chú thích.
+//   cover.fit    : (tuỳ chọn) 'contain' để không cắt ảnh (ảnh bìa có chữ).
 //   profile      : (bài phỏng vấn) { name, role, image, facts } cho trang Gương mặt nhân văn.
 //   content      : danh sách các đoạn. Các loại block:
 //                  { type: 'p', text }                 đoạn văn
 //                  { type: 'h2', text }                tiêu đề phụ
-//                  { type: 'image', src, caption }     ảnh trong bài
+//                  { type: 'image', src, caption, alt } ảnh trong bài
 //                  { type: 'quote', text, cite }       trích dẫn
 //                  { type: 'qa', q, a }                hỏi – đáp (bài phỏng vấn)
 //                  { type: 'list', ordered, items: [{ title, text }] }
 //                  { type: 'box', title, text }        khung thông tin
+//                  { type: 'skills', title, items: [{ icon, label }] }   ô kỹ năng/điểm nổi bật
 
 export const ARTICLES = [
   {
@@ -217,18 +220,67 @@ export const ARTICLES = [
     ],
     author: '',
     date: '',
-    cover: { image: '', from: '#2f6f73', to: '#0f2e30', emoji: '🔎', word: 'Minigame' },
+    cover: {
+      image: '/images/minigame-bia.png',
+      fit: 'contain', // ảnh bìa có chữ – không cắt; from/to = màu mép trên/dưới của ảnh để tô phần dư
+      from: '#fffffd',
+      to: '#fd9763',
+      emoji: '🔎',
+      word: 'Minigame',
+    },
   },
   {
-    slug: 'bai-vui',
+    slug: 'soc-nhan-van',
     category: 'fun-zone',
     type: 'funny',
-    title: 'Tiêu đề bài viết vui',
-    sapo: 'Sapo bài viết sẽ được cập nhật.',
+    title: 'Điều gì Nhân văn có mà trường khác không có?',
+    excerpt: 'Đó chính là 2 chú Sóc biết đi, biết tương tác và còn có thể giải đáp thông tin!',
+    readMore:
+      'Nếu thấy Sóc đang “vi vu” trong Trường, quý thầy cô đừng ngại chào Sóc một tiếng và thử trò chuyện. Vì sao ư? Quý thầy cô hãy [vào đây] để hiểu Sóc lợi hại như thế nào nhé!',
+    sapo: 'Đó chính là chú Sóc biết đi, biết tương tác và còn có thể giải đáp thông tin cho sinh viên!',
     author: '',
     date: '',
-    cover: { image: '', from: '#c2410c', to: '#7c2d12', emoji: '😂', word: 'Giải trí' },
-    content: [],
+    cover: {
+      image: '/images/funny-soc-nhan-van.jpg',
+      alt: 'Robot Sóc Nhân văn đứng giữa hai linh vật Sóc mặc áo USSH',
+      from: '#c2410c',
+      to: '#7c2d12',
+      emoji: '🐿️',
+      word: 'Giải trí',
+    },
+    content: [
+      {
+        type: 'p',
+        text: 'Nếu gần đây quý thầy cô bắt gặp chú Sóc nhỏ đang di chuyển trong khuôn viên trường, thì không phải nhìn nhầm đâu. Sóc Nhân văn đã chính thức “chào sân” tại Ngày hội Chào đón Tân sinh viên Khóa 2026.',
+      },
+      {
+        type: 'image',
+        src: '/images/funny-chao-san.jpg',
+        alt: 'Robot Sóc Nhân văn chụp ảnh lưu niệm cùng thầy cô và khách mời',
+      },
+      {
+        type: 'p',
+        text: 'Ngoài sự đáng yêu, Sóc Nhân văn còn là robot tự động có khả năng di chuyển, nhận diện, tương tác và hỗ trợ cung cấp, giải đáp thông tin cho sinh viên. Nói cách khác, các USSH-er nay đã có thêm một “trợ lý” có thể chủ động đi lại trong khuôn viên Trường thay vì… đứng yên chờ được hỏi.',
+      },
+      {
+        type: 'skills',
+        title: 'Sóc Nhân văn biết làm gì?',
+        items: [
+          { icon: '🚶', label: 'Di chuyển' },
+          { icon: '👀', label: 'Nhận diện' },
+          { icon: '💬', label: 'Tương tác' },
+          { icon: '💡', label: 'Giải đáp thông tin' },
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Đặc biệt, với các tân sinh viên, Sóc Nhân văn có thể trở thành một người bạn đồng hành trong những ngày đầu làm quen với môi trường mới.',
+      },
+      {
+        type: 'p',
+        text: 'Vậy nên, lần tới nếu thấy Sóc đang “vi vu” trong Trường, quý thầy cô và các bạn đừng ngại chào Sóc một tiếng và thử trò chuyện. Biết đâu, người bạn này lại giúp quý thầy cô tìm được thông tin mình đang cần!',
+      },
+    ],
   },
 ]
 

@@ -6,6 +6,7 @@ export const DAYS = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6']
 
 export const MINIGAME = {
   title: 'Soi dữ kiện: Đoán ai là khách mời',
+  banner: '/images/minigame-bia.png',
   intro:
     'Trong **Tuần lễ đón Tân sinh viên tại cơ sở Linh Xuân**, từ thứ Hai đến thứ Sáu, nhà trường tổ chức **mỗi ngày một talkshow**.',
 
