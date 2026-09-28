@@ -2,7 +2,9 @@ export const SITE = {
   name: 'Trạm Tin Nhân Văn',
   motto: 'Lắng nghe · Ghi chép · Lan tỏa',
   // Email nhận thư từ Góc góp ý (điền vào để form hoạt động)
-  feedbackEmail: '',
+  feedbackEmail: 'tramtinnhanvan@hcmussh.edu.vn',
+  // Email chính thức của bản tin nhận đáp án minigame (điền vào để nút "Gửi qua email" hoạt động)
+  minigameEmail: 'tramtinnhanvan@hcmussh.edu.vn',
 }
 
 export const NAV = [

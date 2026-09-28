@@ -208,11 +208,16 @@ export const ARTICLES = [
     slug: 'minigame',
     category: 'fun-zone',
     type: 'game',
-    title: 'Minigame: Bạn có phải “phóng viên chính hiệu”?',
-    sapo: '10 câu hỏi, mỗi câu 20 giây. Trả lời càng nhanh điểm càng cao!',
+    title: 'Soi dữ kiện: Đoán ai là khách mời',
+    // Câu hỏi, thể lệ, giải thưởng: src/data/minigame.js
+    excerpt: [
+      'Trong Tuần lễ đón Tân sinh viên tại cơ sở Linh Xuân, 5 khách mời sẽ lần lượt góp mặt trong các talkshow từ thứ Hai đến thứ Sáu. Nhưng ai sẽ xuất hiện vào ngày nào? Câu trả lời được giấu trong những dữ kiện về lịch trình của từng khách mời.',
+      'Quý thầy cô hãy thử soi dữ kiện, xâu chuỗi thông tin và tìm ra đáp án cho 3 câu hỏi của minigame [tại đây].',
+      '3 phần thưởng là voucher Fahasa với tổng giá trị lên đến 4.500.000 đồng đang đợi 3 người có đáp án chính xác và nhanh nhất!',
+    ],
     author: '',
     date: '',
-    cover: { image: '', from: '#2f6f73', to: '#0f2e30', emoji: '🎮', word: 'Minigame' },
+    cover: { image: '', from: '#2f6f73', to: '#0f2e30', emoji: '🔎', word: 'Minigame' },
   },
   {
     slug: 'bai-vui',

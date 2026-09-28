@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import QuizGame from '../components/QuizGame.jsx'
+import Puzzle from '../components/Puzzle.jsx'
 
 export default function GamePage() {
   return (
@@ -12,7 +12,7 @@ export default function GamePage() {
           <span>/</span>
           <span>Minigame</span>
         </nav>
-        <QuizGame />
+        <Puzzle />
       </div>
     </section>
   )

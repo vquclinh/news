@@ -24,8 +24,8 @@ Mở http://localhost:5173
 ## Sửa nội dung
 
 - **Bài viết**: `src/data/articles.js` (hướng dẫn định dạng ở đầu file)
-- **Câu hỏi minigame**: `src/data/quiz.js`
-- **Tên trang, menu, chuyên mục, email nhận góp ý**: `src/data/site.js`
+- **Minigame (khách mời, lịch, câu hỏi, giải thưởng, hạn chót)**: `src/data/minigame.js`
+- **Tên trang, menu, chuyên mục, email nhận góp ý / đáp án minigame**: `src/data/site.js`
 - **Ảnh**: bỏ vào `public/images/`, rồi dùng đường dẫn `/images/ten-anh.jpg` trong bài.
 
 ## Deploy
