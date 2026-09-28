@@ -20,7 +20,7 @@ export const CATEGORIES = {
     label: 'Điểm tin nhân văn',
     path: '/diem-tin-nhan-van',
     color: '#9f1d2c',
-    description: 'Những chuyển động mới nhất trong đời sống học đường – ngắn gọn, chính xác, đúng chất nhà báo.',
+    description: 'Cập nhật nhanh chóng, chuẩn xác các tiêu điểm sự kiện và hoạt động học thuật tiêu biểu.',
   },
   'guong-mat': {
     label: 'Gương mặt nhân văn',
