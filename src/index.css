@@ -284,24 +284,6 @@ h3 {
   min-height: 54px;
 }
 
-.nav__brand {
-  position: absolute;
-  left: 24px;
-  font-family: var(--serif);
-  font-weight: 800;
-  font-size: 20px;
-  opacity: 0;
-  transform: translateX(-10px);
-  pointer-events: none;
-  transition: 0.35s var(--ease);
-}
-
-.nav--scrolled .nav__brand {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-}
-
 .nav__list {
   display: flex;
   gap: 6px;
@@ -2611,13 +2593,6 @@ h3 {
 
   .nav__inner {
     justify-content: flex-start;
-  }
-
-  .nav__brand {
-    position: static;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
   }
 
   .nav__toggle {

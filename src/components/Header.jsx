@@ -46,9 +46,6 @@ export default function Header() {
 
       <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`} aria-label="Điều hướng chính">
         <div className="container nav__inner">
-          <Link to="/" className="nav__brand" aria-hidden={!scrolled} tabIndex={scrolled ? 0 : -1}>
-            {SITE.name}
-          </Link>
           <button
             className={`nav__toggle ${open ? 'is-open' : ''}`}
             onClick={() => setOpen((o) => !o)}
