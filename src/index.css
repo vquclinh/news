@@ -206,9 +206,22 @@ h3 {
   color: var(--gold);
 }
 
+/* Logo trường ở cột trái, cột phải để trống cùng bề rộng → tên báo luôn nằm chính giữa */
 .masthead {
+  --emblem-h: clamp(64px, 8vw, 100px);
+  --emblem-w: calc(var(--emblem-h) * 1.456);
+  display: grid;
+  grid-template-columns: minmax(var(--emblem-w), 1fr) auto minmax(var(--emblem-w), 1fr);
+  align-items: center;
+  column-gap: 20px;
   text-align: center;
   padding-block: 34px 22px;
+}
+
+.masthead__emblem {
+  justify-self: start;
+  height: var(--emblem-h);
+  width: auto;
 }
 
 .masthead__logo {
@@ -2601,7 +2614,14 @@ h3 {
   }
 
   .masthead {
+    --emblem-h: 42px;
+    column-gap: 10px;
     padding-block: 24px 16px;
+  }
+
+  .masthead__logo {
+    font-size: 36px;
+    text-wrap: balance;
   }
 
   .masthead__tagline::before,

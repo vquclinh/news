@@ -34,6 +34,11 @@ export default function Header() {
       </div>
 
       <div className="container masthead">
+        <img
+          src="/images/logo-ussh.svg"
+          alt="Logo Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM"
+          className="masthead__emblem"
+        />
         <Link to="/" className="masthead__logo">
           {SITE.name}
         </Link>
